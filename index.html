@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hydro Jetting in Atlanta, GA | 24/7 House Dr's – 35 Years of Drain Experts</title>
 <meta name="description" content="Stop the clogs for good. 24/7 House Dr's has been clearing Atlanta-area drain and sewer lines for 35 years. Camera-verified hydro jetting, upfront pricing, 24/7 emergency response. Call 404-201-3375.">
 <meta name="theme-color" content="#125993">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hydro Jetting in Atlanta | 24/7 House Dr's">
+<meta property="og:description" content="35 years of drain expertise. Camera-verified hydro jetting, upfront pricing, 24/7 emergency response.">
+<meta property="og:image" content="https://img1.wsimg.com/isteam/ip/fb566375-9665-4748-9d8b-d76847b7f1db/Fa-01-01-0001.png/:/rs=h:630,cg:true,m/qt=q:95">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -70,7 +74,10 @@
   --fb:'Source Sans 3',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a,button,summary{-webkit-tap-highlight-color:transparent}
+.swipe{display:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 body{font-family:var(--fb);color:var(--ink);background:var(--off);line-height:1.55;font-size:17px}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -292,6 +299,7 @@ footer .logo-badge img{height:70px}
 
 /* Mobile sticky call bar */
 .mbar{display:none}
+.scene-scroll{display:block}
 
 @media(max-width:1000px){
   .hero .wrap,.expert .wrap,.compare,.signs{grid-template-columns:1fr}
@@ -304,21 +312,143 @@ footer .logo-badge img{height:70px}
   nav{display:none}
 }
 @media(max-width:680px){
-  body{font-size:16px}
-  section{padding:60px 0}
-  .hdr{flex-direction:column;align-items:center;gap:0;padding-bottom:10px}
-  .hdr-r{gap:14px}
-  .hdr-r .btn{display:none}
-  .hphone{text-align:center}
+  body{font-size:16px;padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+  .wrap{padding:0 18px}
+  section{padding:52px 0}
+  .hide-m{display:none}
+  .swipe{display:block;text-align:center;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--aqua);margin:0 0 12px}
+
+  /* slim bars */
+  .ebar{font-size:12px}
+  .ebar .wrap{padding-top:7px;padding-bottom:7px}
+  .ebar a{display:none}
+  .hdr-wrap{border-bottom-width:3px}
+  .hdr{flex-direction:row;align-items:center;justify-content:space-between;gap:10px;padding-top:6px;padding-bottom:6px}
+  .hdr-l{padding:0}
   .tag{display:none}
-  .trust .wrap{grid-template-columns:1fr 1fr}
-  .stat{flex-direction:column;text-align:center;padding:16px 6px}
-  .svc-grid,.why-grid,.rev-grid,.steps,.spec-grid,.sign-list,.f-grid{grid-template-columns:1fr}
-  .gauge .big{font-size:90px}
-  .signs{padding:28px}
-  .hero .wrap{padding-top:48px;padding-bottom:56px}
-  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:700;background:var(--red);color:#fff;justify-content:center;align-items:center;gap:10px;padding:14px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;box-shadow:0 -6px 20px rgba(0,0,0,.3)}
-  body{padding-bottom:56px}
+  .logo-badge{padding:3px 6px;border-radius:9px}
+  .logo-badge img{height:44px}
+  .hdr-r{gap:0}
+  .hdr-r .btn,.hdr-r nav,.hphone small{display:none}
+  .hphone a{font-size:27px;background:var(--red);padding:9px 14px;border-radius:8px;display:inline-block;line-height:1;box-shadow:0 3px 0 var(--red-d)}
+  .hphone a::before{content:"📞 ";font-size:18px}
+
+  /* hero */
+  .hero .wrap{padding-top:34px;padding-bottom:40px;gap:28px}
+  .eyebrow{font-size:11px;padding:6px 12px;margin-bottom:16px;letter-spacing:.12em}
+  h1{font-size:clamp(40px,12.5vw,54px);line-height:1}
+  h1 .hollow{-webkit-text-stroke:1.5px #fff}
+  .hero p.lead{font-size:17px;margin:16px 0 22px}
+  .ctas{flex-direction:column;align-items:stretch;gap:12px}
+  .btn{justify-content:center;min-height:52px;padding:14px 18px;font-size:16px;text-align:center}
+  .btn-ghost{padding:12px 18px}
+  .chips{gap:8px 16px;font-size:14px;margin-top:22px}
+  .pipe-card{padding:16px;border-radius:16px}
+  .pipe-card h3{font-size:19px}
+  .pipe-box{padding:10px}
+  .pipe-box small{font-size:10px;letter-spacing:.08em}
+  .pipe-stat{font-size:12px}
+  .pipe-stat b{font-size:22px}
+
+  /* trust bar: 2 up, last one full width */
+  .trust .wrap{grid-template-columns:1fr 1fr;padding:0}
+  .stat{flex-direction:row;text-align:left;gap:10px;padding:14px 14px;border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.08)}
+  .stat:last-child{grid-column:1 / -1;justify-content:center}
+  .ico{flex:0 0 36px;height:36px;font-size:16px}
+  .stat b{font-size:22px}
+  .stat span{font-size:11px;letter-spacing:.04em}
+
+  /* headings */
+  h2{font-size:clamp(30px,9vw,40px)}
+  .sec-sub{font-size:16px;margin-top:12px}
+  .kicker{font-size:12px}
+
+  /* expert */
+  .expert .wrap{gap:34px}
+  .expert p{font-size:16px;margin-top:14px}
+  .quote{font-size:17px;padding-left:16px}
+  .gauge{padding:24px;border-radius:18px}
+  .gauge .big{font-size:76px}
+  .gauge h3{font-size:22px}
+  .gauge li{font-size:15px}
+
+  /* hydro */
+  .spec-grid{grid-template-columns:1fr 1fr;gap:10px;margin-top:30px}
+  .spec{padding:16px}
+  .spec b{font-size:26px}
+  .spec span{font-size:12.5px;line-height:1.4}
+  .scene{margin-top:0;border-radius:16px}
+  .scene-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+  .scene-scroll svg{width:820px;max-width:none;height:auto}
+  .scene figcaption{font-size:13px;padding:12px 16px}
+  .compare{margin-top:34px;gap:14px}
+  .col{padding:22px}
+  .col h3{font-size:24px}
+  .col li{font-size:15.5px}
+  .process{margin-top:44px}
+  .process h3.ph{font-size:26px;margin-bottom:14px}
+  .steps{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;margin:0 -18px;padding:0 18px 12px}
+  .step{flex:0 0 80%;scroll-snap-align:center;padding:20px 18px}
+  .step::before{font-size:42px}
+  .signs{margin-top:44px;padding:24px 20px;border-radius:16px;gap:20px}
+  .signs h3{font-size:30px}
+  .sign-list{grid-template-columns:1fr;gap:8px}
+  .sign-list li{padding:10px 12px;font-size:15px}
+
+  /* services: 2-up compact */
+  .svc-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+  .card{padding:18px 16px;border-radius:14px}
+  .card.feat,.card:last-child{grid-column:1 / -1}
+  .card .cico{width:42px;height:42px;font-size:19px;margin-bottom:12px}
+  .card h3{font-size:16px;line-height:1.2}
+  .card p{font-size:14px;margin:6px 0 12px;line-height:1.45}
+  .card a{font-size:13px;display:inline-block;padding:6px 0}
+  .card.feat h3{font-size:20px}
+  .card.feat p{font-size:15px}
+
+  /* why: number beside copy */
+  .why-grid{grid-template-columns:1fr;gap:26px;margin-top:32px}
+  .why-grid>div{display:grid;grid-template-columns:64px 1fr;column-gap:14px}
+  .why-grid .n{font-size:52px;grid-row:1 / span 2}
+  .why-grid h3{font-size:18px;margin:4px 0 6px;align-self:start;justify-self:start}
+  .why-grid p{font-size:15px}
+
+  /* reviews placeholder: one card */
+  .rev-grid{grid-template-columns:1fr;margin-top:28px}
+  .rev:nth-child(n+2){display:none}
+
+  /* faq */
+  .faq-list{margin-top:28px;gap:10px}
+  details{padding:0 16px}
+  summary{font-size:16px;padding:16px 0;min-height:52px;align-items:center}
+  details p{font-size:15px}
+
+  /* areas */
+  .pills{gap:8px;margin-top:26px}
+  .pills span{padding:8px 14px;font-size:14px}
+
+  /* cta */
+  .cta{padding:60px 0}
+  .cta p{font-size:17px}
+  .cta .bigphone{font-size:clamp(40px,12.5vw,60px);margin-bottom:22px}
+
+  /* footer */
+  footer{padding:44px 0 20px}
+  .f-grid{grid-template-columns:1fr 1fr;gap:26px 18px}
+  .f-grid>div:first-child{grid-column:1 / -1}
+  .copy{flex-direction:column;gap:6px;margin-top:28px}
+
+  /* sticky call + text bar */
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:700;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:var(--navy);border-top:3px solid var(--red);box-shadow:0 -6px 20px rgba(0,0,0,.35)}
+  .mbar a{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;font-size:16px}
+  .mb-call{flex:1.6;background:var(--red);color:#fff;box-shadow:0 3px 0 var(--red-d)}
+  .mb-text{flex:1;background:#fff;color:var(--blue-d)}
+}
+@media(max-width:360px){
+  .svc-grid{grid-template-columns:1fr}
+  .hphone a{font-size:23px;padding:8px 10px}
+  .logo-badge img{height:38px}
 }
 </style>
 </head>
@@ -328,7 +458,7 @@ footer .logo-badge img{height:70px}
 <div class="ebar">
   <div class="wrap">
     <span class="dot"></span>
-    <span>24/7 Live Dispatch · Clogged main line? We answer at 2 AM.</span>
+    <span>24/7 Live Dispatch <span class="hide-m">· Clogged main line? We answer at 2 AM.</span></span>
     <a href="tel:+14042013375">404-201-3375</a>
   </div>
 </div>
@@ -462,8 +592,9 @@ footer .logo-badge img{height:70px}
       <div class="spec"><b>0</b><span>Harsh chemicals. Just water, technique and 35 years of know-how</span></div>
     </div>
 
+    <p class="swipe" style="margin-top:36px">Swipe to see the whole job →</p>
     <figure class="scene">
-      <svg viewBox="0 0 1200 500" role="img" aria-label="24/7 House Dr's hydro jetting truck feeding a jetting hose through a cleanout into an underground sewer line">
+      <div class="scene-scroll"><svg viewBox="0 0 1200 500" role="img" aria-label="24/7 House Dr's hydro jetting truck feeding a jetting hose through a cleanout into an underground sewer line">
         <defs>
           <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d4676"/><stop offset="1" stop-color="#2a86c4"/></linearGradient>
           <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2a2e"/><stop offset="1" stop-color="#0f0f12"/></linearGradient>
@@ -556,7 +687,7 @@ footer .logo-badge img{height:70px}
         <path d="M660 424 L780 402" stroke="#e5334b" stroke-width="2" stroke-dasharray="4 4"/>
         <path d="M930 452 L890 414" stroke="#fff" stroke-width="2" stroke-dasharray="4 4"/>
         <path d="M652 158 L557 308" stroke="#3fc3ee" stroke-width="2" stroke-dasharray="4 4"/>
-      </svg>
+      </svg></div>
       <figcaption>Illustration: a 24/7 House Dr's jetting truck feeds a hose through your cleanout and scours the entire line — the clog is cut apart and flushed out, not pushed downstream. <em>(Swap in a photo of his real truck for launch.)</em></figcaption>
     </figure>
 
@@ -587,6 +718,7 @@ footer .logo-badge img{height:70px}
 
     <div class="process">
       <h3 class="ph">Our 5-Step Jetting Process</h3>
+      <p class="swipe">Swipe to see each step →</p>
       <div class="steps">
         <div class="step"><h4>Camera Inspect</h4><p>We scope the line first to find the blockage, the pipe material and any damage. No blind jetting — ever.</p></div>
         <div class="step"><h4>Choose the Tool</h4><p>Root cutter, penetrator, flushing or descaling nozzle — matched to what the camera found.</p></div>
@@ -757,7 +889,7 @@ footer .logo-badge img{height:70px}
   </div>
 </footer>
 
-<a class="mbar" href="tel:+14042013375">📞 Tap to Call 404-201-3375</a>
+<div class="mbar"><a class="mb-call" href="tel:+14042013375">📞 Call Now</a><a class="mb-text" href="sms:+14042013375">💬 Text Us</a></div>
 
 </body>
 </html>
